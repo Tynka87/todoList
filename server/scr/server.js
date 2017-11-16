@@ -33,7 +33,7 @@ let task1 = {
 
 let task2 = {
     id: genId(),
-    title: "task12",
+    title: "task2",
     createDate: new Date(),
     status: false,
     items: [
