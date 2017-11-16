@@ -1,0 +1,23 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "todo list server",
+  "main": "server.js",
+  "scripts": {
+    "start": "node ./scr/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tynka87/todoList.git"
+  },
+  "author": "martyna",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Tynka87/todoList/issues"
+  },
+  "homepage": "https://github.com/Tynka87/todoList#readme",
+  "dependencies": {
+    "express": "^4.16.2"
+  }
+}
