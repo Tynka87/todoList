@@ -53,18 +53,18 @@ exports.getTasks = (req, res) => {
 
 exports.getTaskById = (req, res) => {
     let id = parseInt(req.params.id);
-    if (tasks.has(id)){
+    if (tasks.has(id)) {
         res.send(tasks.get(id))
-    }else{
+    } else {
         res.status(HttpStatus.NOT_FOUND).send();
     }
 };
 
 exports.deleteTaskById = (req, res) => {
     let id = parseInt(req.params.id);
-    if (tasks.delete(id)){
+    if (tasks.delete(id)) {
         res.status(HttpStatus.NO_CONTENT).send();
-    }else{
+    } else {
         res.status(HttpStatus.NOT_FOUND).send();
     }
 };
@@ -72,10 +72,11 @@ exports.deleteTaskById = (req, res) => {
 function isValidForAdd(newTask) {
     return newTask.title && (newTask.description || newTask.items);
 }
+
 exports.addTask = (req, res) => {
     let newTask = req.body;
 
-    if (isValidForAdd(newTask)){
+    if (isValidForAdd(newTask)) {
 
         newTask.id = genId();
         newTask.createDate = new Date();
@@ -83,7 +84,25 @@ exports.addTask = (req, res) => {
         tasks.set(newTask.id, newTask);
         res.status(HttpStatus.CREATED).send(newTask);
 
-    }else{
+    } else {
         res.status(HttpStatus.BAD_REQUEST).send();
     }
+};
+
+exports.editTask = (req, res) => {
+    let taskId = parseInt(req.params.id);
+    let editedTask = req.body;
+
+    if (tasks.has(taskId)) {
+        let task = tasks.get(taskId);
+        task.title = editedTask.title;
+        task.description = editedTask.description;
+        task.items = editedTask.items;
+        task.done = editedTask.done;
+        tasks.set(taskId, task);
+        res.status(HttpStatus.ACCEPTED).send(task);
+    } else {
+        res.status(HttpStatus.NOT_FOUND).send();
+    }
+
 };
