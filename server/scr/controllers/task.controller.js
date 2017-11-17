@@ -9,33 +9,33 @@ function genId() {
 let task1 = {
     id: genId(),
     title: "task1",
-    createDate: new Date(),
-    status: false,
-    description: "opis taska 1"
+    done: false,
+    description: "opis taska 1",
+    createDate: new Date()
 };
 
 let task2 = {
     id: genId(),
     title: "task2",
-    createDate: new Date(),
-    status: false,
+    done: false,
     items: [
         {
             id: genId(),
             content: "lp 1",
-            status: false
+            done: false
         },
         {
             id: genId(),
             content: "lp 2",
-            status: true
+            done: true
         },
         {
             id: genId(),
             content: "lp 3",
-            status: false
+            done: false
         }
-    ]
+    ],
+    createDate: new Date()
 };
 
 let tasks = new Map();
@@ -66,5 +66,24 @@ exports.deleteTaskById = (req, res) => {
         res.status(HttpStatus.NO_CONTENT).send();
     }else{
         res.status(HttpStatus.NOT_FOUND).send();
+    }
+};
+
+function isValidForAdd(newTask) {
+    return newTask.title && (newTask.description || newTask.items);
+}
+exports.addTask = (req, res) => {
+    let newTask = req.body;
+
+    if (isValidForAdd(newTask)){
+
+        newTask.id = genId();
+        newTask.createDate = new Date();
+        newTask.done = false;
+        tasks.set(newTask.id, newTask);
+        res.status(HttpStatus.CREATED).send(newTask);
+
+    }else{
+        res.status(HttpStatus.BAD_REQUEST).send();
     }
 };
