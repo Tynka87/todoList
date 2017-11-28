@@ -1,0 +1,9 @@
+<div *ngIf="task">
+
+  <h2>{{ task.title | uppercase }}</h2>
+  <div>{{task.description}}</div>
+  <div><p>Data stworzenia taska: {{task.createDate | date:"dd/MM/yy"}}</p></div>
+
+</div>
+
+<!--<app-create-task></app-create-task>-->

@@ -1,0 +1,26 @@
+.container {
+  display: grid;
+  grid-template-columns: 2fr 4fr;
+  grid-template-rows: 1fr;
+  grid-template-areas: "left right";
+  margin: auto 0 auto;
+
+}
+
+.listTask, .detailTask{
+  heigth: 100%;
+  width: 100%;
+  font-size: 25px;
+  text-align: center;
+}
+
+
+.listTask{
+  grid-area: left;
+  border: 2px solid black;
+}
+
+.detailTask {
+  grid-area: right;
+  border: 2px solid black;
+}

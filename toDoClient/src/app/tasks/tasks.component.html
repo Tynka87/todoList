@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="listTask">
+    <div>
+      <button [disabled]="test"
+        (click)="onAddTask()">
+        Dodaj nowy task
+      </button>
+    </div>
+    <ul class="">
+      <li *ngFor="let task of tasks"
+          [class.selected]="task === selectedTask"
+          (click)="onSelect(task)">
+        <a>
+          <span class="">{{task.title}}</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+  <div class="detailTask">
+    <app-detail-task *ngIf="!test"
+      [task] = "selectedTask"></app-detail-task>
+    <app-create-task *ngIf="test"></app-create-task>
+  </div>
+</div>
+
+
