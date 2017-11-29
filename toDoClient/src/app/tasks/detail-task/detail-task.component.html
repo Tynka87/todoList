@@ -4,6 +4,15 @@
   <div>{{task.description}}</div>
   <div><p>Data stworzenia taska: {{task.createDate | date:"dd/MM/yy"}}</p></div>
 
+  <p>
+    <button class="btn btn-primary" type="button" (click)="onUpdate(task)">Edutuj task</button>
+    <button class="btn" type="button" (click)="onDelete(task)" >Usuń task</button>
+  </p>
+
 </div>
+
+
+  <app-create-task *ngIf="update" ></app-create-task>
+
 
 <!--<app-create-task></app-create-task>-->

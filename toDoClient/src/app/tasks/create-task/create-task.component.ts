@@ -16,7 +16,9 @@ export class CreateTaskComponent implements OnInit {
   }
 
   onSubmit() {
-    this.submitted = true;
+    //this.submitted = true;
+    this.tasksService.addTask(this.newTask).subscribe(() => {
+    });
     alert(JSON.stringify(this.newTask));
   }
 

@@ -2,7 +2,6 @@ import {Component, Input, OnInit} from '@angular/core';
 import{Task} from '../../models/task';
 import {TasksService} from "../../services/tasks.service";
 
-
 @Component({
   selector: 'app-detail-task',
   templateUrl: './detail-task.component.html',
@@ -11,8 +10,19 @@ import {TasksService} from "../../services/tasks.service";
 export class DetailTaskComponent implements OnInit {
 
   @Input() task: Task;
+  update: boolean = false;
 
-  constructor() { }
+  onDelete(task: Task): void {
+    this.tasksService.deleteTask(task.id).subscribe(() => {
+    });
+  }
+
+  onUpdate(task: Task): void {
+    this.update = true;
+  }
+
+  constructor(private tasksService: TasksService) {
+  }
 
   ngOnInit() {
   }

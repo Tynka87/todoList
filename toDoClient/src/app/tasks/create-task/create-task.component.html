@@ -1,8 +1,8 @@
 <!--<p>ahjsdhaskjd</p>-->
-<div class="container">
+<!--<div class="container">-->
   <div [hidden]="submitted">
     <h1>Nowy task</h1>
-    <form (ngSubmit)="onSubmit()" #heroForm="ngForm">
+    <form (ngSubmit)="onSubmit()" #taskForm="ngForm" role="form">
       <div class="form-group">
         <label for="title">Tytuł</label>
         <input type="text" class="form-control" id="title"
@@ -14,21 +14,30 @@
           Name is required
         </div>
       </div>
+      <div class="form-group">
+        <label for="description">Opis</label>
+        <textarea type="text" class="form-control" rows="4" id="description"
+                  required
+                  [(ngModel)]="newTask.description" name="description"
+                  #description="ngModel"></textarea>
+        <div [hidden]="description.valid || !description.touched"
+             class="alert alert-danger">
+          Opis is required
+        </div>
+      </div>
 
-      <!--<div class="form-group">-->
-        <!--<label for="alterEgo">Alter Ego</label>-->
-        <!--<input type="text" class="form-control" id="alterEgo"-->
-               <!--[(ngModel)]="model.alterEgo" name="alterEgo">-->
-      <!--</div>-->
+    <!--  <div class="form-group checkbox">
+        <label for="done">
+          <input type="checkbox" id="done"
+                 [(ngModel)]="newTask.done" name="done"
+                 #title="ngModel">
+          Zrobione</label>
+
+      </div>-->
 
 
-      <button type="submit" class="btn btn-success" [disabled]="heroForm.form.invalid">Zapisz</button>
+      <button type="submit" title.value='' class="btn btn-success" [disabled]="taskForm.form.invalid">Zapisz</button>
 
-      <!--<div>-->
-        <!--<hr>-->
-        <!--Name via form.controls = {{showFormControls(heroForm)}}-->
-      <!--</div>-->
-      <!-- - -->
     </form>
   </div>
-</div>
+<!--</div>-->
