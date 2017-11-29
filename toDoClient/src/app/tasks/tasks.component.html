@@ -1,25 +1,30 @@
-<div class="container">
-  <div class="listTask">
-    <div>
-      <button [disabled]="test"
-        (click)="onAddTask()">
-        Dodaj nowy task
-      </button>
-    </div>
-    <ul class="">
-      <li *ngFor="let task of tasks"
-          [class.selected]="task === selectedTask"
-          (click)="onSelect(task)">
-        <a>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-3">
+
+
+      <ul class="list-group">
+        <a class="list-group-item list-group-item-header">Taski</a>
+        <a *ngFor="let task of tasks"
+           [class.active]="task === selectedTask"
+           (click)="onSelect(task)" class="list-group-item list-group-item-action">
           <span class="">{{task.title}}</span>
         </a>
-      </li>
-    </ul>
-  </div>
-  <div class="detailTask">
-    <app-detail-task *ngIf="!test"
-      [task] = "selectedTask"></app-detail-task>
-    <app-create-task *ngIf="test"></app-create-task>
+
+      </ul>
+      <br/>
+      <p>
+        <button type="button" class="btn btn-outline-primary btn-right" [disabled]="test"
+                (click)="onAddTask()">
+          Dodaj nowy task
+        </button>
+      </p>
+    </div>
+    <div class="col-md-8">
+      <app-detail-task *ngIf="!test"
+                       [task]="selectedTask"></app-detail-task>
+      <app-create-task *ngIf="test" (onSubmit)="onTaskAddData($event)"></app-create-task>
+    </div>
   </div>
 </div>
 

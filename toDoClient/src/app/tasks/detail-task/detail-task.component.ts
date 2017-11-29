@@ -13,8 +13,7 @@ export class DetailTaskComponent implements OnInit {
   update: boolean = false;
 
   onDelete(task: Task): void {
-    this.tasksService.deleteTask(task.id).subscribe(() => {
-    });
+    this.tasksService.deleteTask(task.id).subscribe(() => { });
   }
 
   onUpdate(task: Task): void {

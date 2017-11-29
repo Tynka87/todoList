@@ -1,4 +1,4 @@
-.container {
+/*.container {
   display: grid;
   grid-template-columns: 2fr 4fr;
   grid-template-rows: 1fr;
@@ -23,4 +23,22 @@
 .detailTask {
   grid-area: right;
   border: 2px solid black;
+}*/
+
+
+
+.container-fluid>div {
+  width: 100%;
+  margin: 2%;
+  text-align: center;
+  /*line-height: 75px;*/
+  font-size: 18px;
+
+}
+
+.list-group-item-header{
+  background-color: lightgray;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
 }

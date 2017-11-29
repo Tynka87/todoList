@@ -12,20 +12,33 @@ export class TasksComponent implements OnInit {
   tasks: Task[];
   selectedTask: Task;
 
-  test: boolean = false;
+  // todo zmienić nazwe
+  test = false;
 
   onSelect(task: Task): void {
     this.test = false;
     this.selectedTask = task;
   }
-  onAddTask():void{
+
+  onAddTask(): void {
     this.test = true;
+  }
+
+  onTaskAddData(task: Task) {
+    this.tasksService.addTask(task).subscribe((newTask) => {
+      console.log("new task id: " + newTask.id);
+      this.refreshTask();
+    });
   }
 
   constructor(private tasksService: TasksService) {
   }
 
   ngOnInit() {
+    this.refreshTask();
+  }
+
+  private refreshTask() {
     this.tasksService.getTasks().subscribe(newTasks => this.tasks = newTasks);
   }
 

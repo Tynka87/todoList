@@ -1,18 +1,21 @@
-<div *ngIf="task">
+<div class="card mb-3 text-center" *ngIf="task">
 
-  <h2>{{ task.title | uppercase }}</h2>
-  <div>{{task.description}}</div>
-  <div><p>Data stworzenia taska: {{task.createDate | date:"dd/MM/yy"}}</p></div>
+  <div class="card-header">
+    {{ task.title | uppercase }}
+  </div>
 
-  <p>
+  <div class="card-block">
+    <p class="card-text">{{task.description}}</p>
+    <p class="card-text">Data stworzenia taska: {{task.createDate | date:"dd/MM/yy"}}</p>
+
     <button class="btn btn-primary" type="button" (click)="onUpdate(task)">Edutuj task</button>
-    <button class="btn" type="button" (click)="onDelete(task)" >Usuń task</button>
-  </p>
+    <button class="btn" type="button" (click)="onDelete(task)">Usuń task</button>
 
+  </div>
 </div>
 
 
-  <app-create-task *ngIf="update" ></app-create-task>
+<app-create-task *ngIf="update"></app-create-task>
 
 
 <!--<app-create-task></app-create-task>-->
